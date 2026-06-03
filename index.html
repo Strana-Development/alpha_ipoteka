@@ -384,7 +384,9 @@
       <div class="step-content">
         <p>Юрист компании «Страна» направит договор ДДУ на вашу электронную почту для ознакомления.</p>
         <p>Все вопросы и замечания по договору — адресуйте менеджеру по сопровождению сделки.</p>
-        <button class="done-btn" onclick="markDone(1)">✓ &nbsp;Выполнено</button>
+        <button class="done-btn" onclick="markDone(1)">
+   <span class="btn-text">Отметить как выполнено</span>
+   </button>
       </div>
     </div>
   </div>
@@ -411,7 +413,9 @@
           <strong>⚠️ Запрещено!</strong>
           Вносить деньги напрямую на эскроу счёт до регистрации договора в Росреестре категорически запрещено!
         </div>
-        <button class="done-btn" onclick="markDone(2)">✓ &nbsp;Выполнено</button>
+        <button class="done-btn" onclick="markDone(2)">
+   <span class="btn-text">Отметить как выполнено</span>
+   </button>
       </div>
     </div>
   </div>
@@ -452,7 +456,9 @@
           <strong>⚠️ Важно!</strong>
           Биометрия, сданная только в приложении, не подойдёт для выпуска УКЭП.
         </div>
-        <button class="done-btn" onclick="markDone(3)">✓ &nbsp;Выполнено</button>
+        <button class="done-btn" onclick="markDone(3)">
+   <span class="btn-text">Отметить как выполнено</span>
+   </button>
       </div>
     </div>
   </div>
@@ -482,7 +488,9 @@
         <div class="tip">
          <p>После подписания кредитной документации и выдачи кредита Ваша сделка в Банке завершена. Подписание ДДУ/ДКП с застройщиком происходит дистанционно в приложении.</p>
         </div>  
-        <button class="done-btn" onclick="markDone(4)">✓ &nbsp;Выполнено</button>
+        <button class="done-btn" onclick="markDone(4)">
+   <span class="btn-text">Отметить как выполнено</span>
+   </button>
       </div>
     </div>
   </div>
@@ -506,7 +514,9 @@
           Электронную регистрацию и госпошлину оплачивает застройщик. 
 Вы оплачиваете расходы по сделке в банке (Аккредитив/СБР, Страхование и тд.).
         </div>
-        <button class="done-btn" onclick="markDone(5)">✓ &nbsp;Выполнено</button>
+        <button class="done-btn" onclick="markDone(5)">
+   <span class="btn-text">Отметить как выполнено</span>
+   </button>
       </div>
     </div>
   </div>
@@ -529,7 +539,9 @@
           <strong>💸 Перевод средств на эскроу</strong>
           Также менеджер по сопровождению сделки направит в банк зарегистрированные документы для раскрытия СБР/аккредитива. Банк после проверки документов переведет денежные средства на эскроу счет. 
         </div>
-        <button class="done-btn" onclick="markDone(6)">✓ &nbsp;Выполнено</button>
+        <button class="done-btn" onclick="markDone(6)">
+   <span class="btn-text">Отметить как выполнено</span>
+   </button>
       </div>
     </div>
   </div>
@@ -558,6 +570,15 @@
     state[n] = !state[n];
     const card = document.getElementById('step-' + n);
     card.classList.toggle('done', state[n]);
+     // изменение текста кнопки
+    const btn = card.querySelector('.done-btn');
+    const btnTextSpan = btn.querySelector('.btn-text');
+    if (state[n]) {
+    btnTextSpan.textContent = '✓ Выполнено';
+  } else {
+    btnTextSpan.textContent = 'Отметить как выполнено';
+  }
+
     updateProgress();
     if (state[n]) {
       setTimeout(() => {
